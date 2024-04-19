@@ -29,11 +29,10 @@ class FortifyServiceProvider extends ServiceProvider
             public function toResponse($request)
             {
                 $user = $request->user();
-                $token = $user->createToken('access_token');
+                $user->load('roles');
+                $user->allPermissions = $user->getAllPermissions()->toArray();
 
-                $userArray = $user->toArray();
-                // $userArray['permissions'] = $user->getAllPermissions()->toArray();
-                // $userArray['role'] = "client1";
+                $token = $user->createToken('access_token');
 
                 return response()->json([
                     'status' => 'success',
