@@ -23,7 +23,7 @@ class ApprovalRequestController extends Controller
 
             $userID = Auth::id();
 
-            $approvalsRequest = ApprovalRequest::with(['type', 'status', 'applicant', 'approvers.approverUser', 'approvers.status'])
+            $approvalsRequest = ApprovalRequest::with(['type', 'status', 'applicant', 'approvers.approverUser', 'approvers.status'])->orderBy('created_at', 'desc')
                 ->get()->map(function ($approvalRequest) use ($userID) {
 
                     return [
@@ -56,7 +56,7 @@ class ApprovalRequestController extends Controller
 
             $userID = Auth::id();
 
-            $approvalsRequest = ApprovalRequest::with(['type', 'status', 'applicant', 'approvers.approverUser', 'approvers.status'])
+            $approvalsRequest = ApprovalRequest::with(['type', 'status', 'applicant', 'approvers.approverUser', 'approvers.status'])->orderBy('created_at', 'desc')
                 ->where('applicant_user_id', $userID)->get()->map(function ($approvalRequest) use ($userID) {
 
                     return [
@@ -89,7 +89,7 @@ class ApprovalRequestController extends Controller
 
             $userID = Auth::id();
 
-            $approvalsRequest = ApprovalRequest::with(['type', 'status', 'applicant', 'approvers.approverUser', 'approvers.status'])
+            $approvalsRequest = ApprovalRequest::with(['type', 'status', 'applicant', 'approvers.approverUser', 'approvers.status'])->orderBy('created_at', 'desc')
                 ->whereHas('approvers', function ($query) use ($userID) {
                     $query->where('approver_user_id', $userID);
                 })->get()->map(function ($approvalRequest) use ($userID) {
