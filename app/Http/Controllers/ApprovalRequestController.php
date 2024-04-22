@@ -33,6 +33,7 @@ class ApprovalRequestController extends Controller
                         "created" => Carbon::parse($approvalRequest->created_at)->timezone('America/Mexico_City')->format('d-m-Y H:i:s'),
                         "applicant" => $approvalRequest->applicant->name,
                         "days" => $approvalRequest->days,
+                        "remark" => $approvalRequest->remark,
                         "approvers" => $approvalRequest->approvers,
                         "currentApprover" => $approvalRequest->approvers()->where('approver_user_id', $userID)->first()
                     ];
@@ -66,6 +67,7 @@ class ApprovalRequestController extends Controller
                         "created" => Carbon::parse($approvalRequest->created_at)->timezone('America/Mexico_City')->format('d-m-Y H:i:s'),
                         "applicant" => $approvalRequest->applicant->name,
                         "days" => $approvalRequest->days,
+                        "remark" => $approvalRequest->remark,
                         "approvers" => $approvalRequest->approvers,
                         "currentApprover" => $approvalRequest->approvers()->where('approver_user_id', $userID)->first()
                     ];
@@ -101,6 +103,7 @@ class ApprovalRequestController extends Controller
                         "created" => Carbon::parse($approvalRequest->created_at)->timezone('America/Mexico_City')->format('d-m-Y H:i:s'),
                         "applicant" => $approvalRequest->applicant->name,
                         "days" => $approvalRequest->days,
+                        "remark" => $approvalRequest->remark,
                         "approvers" => $approvalRequest->approvers,
                         "currentApprover" => $approvalRequest->approvers()->where('approver_user_id', $userID)->first()
                     ];
